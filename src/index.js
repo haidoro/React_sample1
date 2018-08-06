@@ -4,12 +4,13 @@ import './index.css';
 
 import registerServiceWorker from './registerServiceWorker';
 
-const name = 'world';
-const element = <h1>Hello, {name}</h1>;
+const ReturnReactElement = (props) => {
+  return <div>
+	  		<h2>{props.name}</h2>
+	  		<p>{props.age}</p>
+  		</div>
+}
 
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
+ReactDOM.render(<ReturnReactElement name="Tahara" age="38"/>, document.getElementById("root"));
 
 registerServiceWorker();
