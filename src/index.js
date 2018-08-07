@@ -4,13 +4,30 @@ import './index.css';
 
 import registerServiceWorker from './registerServiceWorker';
 
-const ReturnReactElement = (props) => {
-  return (<div>
-	  		<h2>{props.name}</h2>
-	  		<p>{props.age}</p>
-  		</div>)
+class H20 extends React.Component{
+	constructor(props) {
+	  super(props);
+	
+	  this.state = {temp: 15};
+	}
+	render(){
+		return(
+				<div>
+				<h2>{this.state.temp}</h2>
+				<button onClick={this.onPlusClick}>+</button>
+				<button onClick={this.onMinusClick}>-</button>
+				</div>
+
+			);
+	}
+	onPlusClick = () =>{
+		this.setState({temp:this.state.temp + 1})
+	}
+	onMinusClick = () =>{
+		this.setState({temp:this.state.temp - 1})
+	}
 }
 
-ReactDOM.render(<ReturnReactElement name="Tahara" age="38"/>, document.getElementById("root"));
+ReactDOM.render(<H20 />, document.getElementById("root"));
 
 registerServiceWorker();
