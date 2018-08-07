@@ -17,9 +17,10 @@ class H20 extends React.Component{
 		}
 	}
 	render(){
+		const {temp} = this.state;
 		return(
-				<div className={this.H20State(this.state.temp)}>
-				<h2>phase: {this.H20State(this.state.temp)},{this.state.temp}</h2>
+				<div className={this.H20State(temp)}>
+				<h2>phase: {this.H20State(temp)},{temp}</h2>
 				<button onClick={this.onPlusClick}>+</button>
 				<button onClick={this.onMinusClick}>-</button>
 				</div>
