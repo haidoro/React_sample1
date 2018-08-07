@@ -4,37 +4,38 @@ import './index.css';
 
 import registerServiceWorker from './registerServiceWorker';
 
-class H20 extends React.Component{
+class Count extends React.Component{
 	constructor(props) {
 	  super(props);	
-	  this.state = {temp: 15};
+	  this.state = {number: 0};
 	}
-	H20State(temp){
-		if(temp <= 0){
-			return "ice";
-		}else{
-			return "water";
-		}
-	}
-	render(){
-		const {temp} = this.state;
-		return(
-				<div className={this.H20State(temp)}>
-				<h2>phase: {this.H20State(temp)},{temp}</h2>
-				<button onClick={this.onPlusClick}>+</button>
-				<button onClick={this.onMinusClick}>-</button>
-				</div>
 
+	render(){
+		return(
+			<div>
+				<h1>カウンター</h1>
+				<div className="wrap">
+				<div className="num">{this.state.number}</div>
+				<div className="button-area">
+					<button className="plus" onClick={this.onPlusClick}>+</button>
+					<button className="minus" onClick={this.onMinusClick}>-</button>
+					<button className="reset" onClick={this.onResetClick}>reset</button>
+				</div>
+				</div>
+			</div>
 			);
 	}
 	onPlusClick = () =>{
-		this.setState({temp:this.state.temp + 1})
+		this.setState({number:this.state.number + 1})
 	}
 	onMinusClick = () =>{
-		this.setState({temp:this.state.temp - 1})
+		this.setState({number:this.state.number - 1})
+	}
+	onResetClick = () =>{
+		this.setState({number:0})
 	}
 }
 
-ReactDOM.render(<H20 />, document.getElementById("root"));
+ReactDOM.render(<Count />, document.getElementById("root"));
 
 registerServiceWorker();
