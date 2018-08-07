@@ -6,14 +6,20 @@ import registerServiceWorker from './registerServiceWorker';
 
 class H20 extends React.Component{
 	constructor(props) {
-	  super(props);
-	
+	  super(props);	
 	  this.state = {temp: 15};
+	}
+	H20State(temp){
+		if(temp <= 0){
+			return "ice";
+		}else{
+			return "water";
+		}
 	}
 	render(){
 		return(
-				<div>
-				<h2>{this.state.temp}</h2>
+				<div className={this.H20State(this.state.temp)}>
+				<h2>phase: {this.H20State(this.state.temp)},{this.state.temp}</h2>
 				<button onClick={this.onPlusClick}>+</button>
 				<button onClick={this.onMinusClick}>-</button>
 				</div>
