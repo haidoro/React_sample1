@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { AddTodo } from "./components/AddTodo";
+import { List } from "./components/List";
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      todos:[],
+      nextId:0
+    }
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+      <h2>TodoApp</h2>
+      <AddTodo addTodo={this.addTodo}/>
+      <List deleteTodo={this.deleteTodo} todos={this.state.todos}/>
       </div>
     );
+  }
+  addTodo = (title) =>{
+    this.setState({todos:[...this.state.todos,{id:this.state.nextId +1,title:title}],
+    nextId: this.state.nextId + 1
+  })
+  }
+  deleteTodo = id =>{
+    this.setState({todos:this.state.todos.filter(todo=>{
+      return todo.id !== id;
+    })})
   }
 }
 
